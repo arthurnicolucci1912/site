@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>IPSSI</title>
+
+  <!-- slider stylesheet -->
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+  <link rel="icon" href="images/server1_78341.png">
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <a class="navbar-brand" href="index.html">
+            <span>
+             REDES
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="sobre.html">Sobre</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="formacao.html">Formação</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="mercado.html">Mercado</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="perfil.html">Perfil</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="referencias.html">Referências</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contact.html">Contato</a>
+                </li>
+              </ul>
+              
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- contact section -->
+
+  <section class="contact_section layout_padding">
+    <div class="container">
+
+      <div class="heading_container">
+        <h2>
+          Entre em contato conosco
+        </h2>
+      </div>
+      <center><h1>Gerenciamento de Arquivos</h1></center>
+
+    
+    <form id="uploadForm">
+        <input type="text" id="nome" placeholder="Nome do Arquivo" required />
+        <input type="text" id="seuNome" placeholder="Seu Nome" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="file" id="arquivo" required />
+        <button type="submit">Upload</button>
+    </form>
+
+
+
+
+
+
+
+
+
+    
+    <style>
+
+ .btn {
+     display: flexbox;
+     padding: 10px 20px;
+     font-size: 16px;
+     color: white;
+     background-color: black;
+     text-decoration: none;
+     text-align: center;
+     position: fixed;
+     bottom: 0;
+     right: 0;
+     border-radius: 50%; /* Adicionado */
+     width: 50px; /* Adicionado */
+     height: 50px; /* Adicionado */
+   }
+   
+   .btn:after {
+     content: "⬆";
+     margin-right: 5px;
+   }
+#uploadForm {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white; /* Cinza */
+    color: #0080ffbc; /* Amarelo */
+    border-radius: 8px;
+}
+
+#uploadForm input[type="text"],
+#uploadForm input[type="email"],
+#uploadForm input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: white; 
+    color: #072162; 
+}
+
+#uploadForm button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: white; /* Amarelo */
+    color: #000000; /* Preto */
+    cursor: pointer;
+
+}
+
+#uploadForm button:hover {
+    background-color: #808080; /* Cinza */
+    color: #00a6ff; /* Amarelo */
+}
+    </style>
+    <a href="#top" class="btn"></a>
+<br>
+   <center> <h2>Lista de Arquivos</h2>
+    <ul id="fileList"></ul>
+
+    <h2>Pré-visualização de Arquivo</h2>
+  </center>
+    <div id="filePreview"></div>
+
+     <!-- footer section -->
+  
+  </section>
+  <section class="container-fluid footer_section">
+    <p>
+      &copy; 2024 Todos os direitos reservador - Arthur Nicolucci & Mateus Rocha
+    </p>
+
+    <p>Site para fins academicos</p>
+  <!-- footer section -->
+  
+    <script src="script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const uploadForm = document.getElementById('uploadForm');
+          const fileList = document.getElementById('fileList');
+          const filePreview = document.getElementById('filePreview');
+      
+          const apiBaseUrl = 'https://localhost:7164/Arquivo';
+      
+          fetchFiles();
+      
+          uploadForm.addEventListener('submit', async (e) => {
+              e.preventDefault();
+              
+              const nome = document.getElementById('nome').value;
+              const seuNome = document.getElementById('seuNome').value;
+              const email = document.getElementById('email').value;
+              const file = document.getElementById('arquivo').files[0];
+      
+              if (!file) {
+                  alert("Selecione um arquivo.");
+                  return;
+              }
+      
+              const reader = new FileReader();
+              reader.onloadend = async () => {
+                  const base64String = reader.result.split(',')[1];
+                  const arquivo = {
+                      nome: nome,
+                      seuNome: seuNome,
+                      email: email,
+                      arquivos: base64String
+                  };
+      
+                  try {
+                      const response = await fetch(apiBaseUrl, {
+                          method: 'POST',
+                          headers: {
+                              'Content-Type': 'application/json'
+                          },
+                          body: JSON.stringify(arquivo)
+                      });
+      
+                      if (response.ok) {
+                          alert('Seu arquivo foi adicionado!');
+                          fetchFiles();
+                      } else {
+                          alert('Não foi possível adicionar o arquivo.');
+                      }
+                  } catch (error) {
+                      alert('Ocorreu um erro ao adicionar o arquivo.');
+                      console.error('Error:', error);
+                  }
+              };
+              reader.readAsDataURL(file);
+          });
+      
+          async function fetchFiles() {
+              try {
+                  const response = await fetch(apiBaseUrl);
+                  const files = await response.json();
+                  fileList.innerHTML = '';
+      
+                  files.forEach(file => {
+                      const listItem = document.createElement('li');
+                      listItem.innerHTML = `
+                          ${file.nome} - ${file.seuNome} - ${file.email}
+                          <button onclick="viewFile('${file.arquivos}')">Ver</button>
+                          <button onclick="deleteFile(${file.id})">Excluir</button>
+                      `;
+                      fileList.appendChild(listItem);
+                  });
+              } catch (error) {
+                  alert('Ocorreu um erro ao buscar os arquivos.');
+                  console.error('Error:', error);
+              }
+          }
+      
+          window.viewFile = (base64String) => {
+              const objectElement = document.createElement('object');
+              objectElement.data = 'data:application/pdf;base64,' + base64String;
+              objectElement.type = 'application/pdf';
+              objectElement.width = '100%';
+              objectElement.height = '600px';
+      
+              filePreview.innerHTML = '';
+              filePreview.appendChild(objectElement);
+          };
+      
+          window.deleteFile = async (id) => {
+              try {
+                  const response = await fetch(`${apiBaseUrl}/${id}`, {
+                      method: 'DELETE'
+                  });
+      
+                  if (response.ok) {
+                      alert('Seu arquivo foi excluído!');
+                      fetchFiles();
+                  } else {
+                      alert('Não foi possível excluir o arquivo.');
+                  }
+              } catch (error) {
+                  alert('Ocorreu um erro ao excluir o arquivo.');
+                  console.error('Error:', error);
+              }
+          };
+      });
+      </script>
+      
+      </body>
